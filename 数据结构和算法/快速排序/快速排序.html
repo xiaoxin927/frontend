@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+    // arr = [3,1,2,5,6,8,7,4,9]
+        // console.log(arr.length);
+        
+
+
+    // var ArrayList = new Array()
+
+
+
+        
+    function ArrayList () {
+
+        this.array = [];
+
+
+        ArrayList.prototype.insert = function (item) {
+            this.array.push(item);
+        }
+
+        ArrayList.prototype.toString = function (item){
+            return this.array.join('-');
+        }
+        
+        ArrayList.prototype.swap = function (m,n) {
+            var temp = this.array[m];
+            this.array[m] = this.array[n];
+            this.array[n] = temp;
+        }
+
+    }
+
+
+    var list = new ArrayList();
+
+    list.insert(3);
+    list.insert(1);
+    list.insert(2);
+    list.insert(5);
+    list.insert(6);
+    list.insert(8);
+    list.insert(7);
+    list.insert(4);
+    list.insert(9);
+    alert(list)
+
+
+
+
+
+
+
+
+
+    //  var ArrayList = [3,1,2,5,6,8,7,4,9]
+
+
+    //  function swap(m,n) {
+
+    //     var temp = 
+         
+    //  }
+
+        // 选择枢纽
+    // 选择枢纽
+ArrayList.prototype.medium = function (left, right) {
+    // 1.求出中间的位置
+    var center = Math.floor((left + right) / 2)
+
+    // 2.判断并且进行交换
+   
+    if (this.array[left] > this.array[center]) {
+        this.swap(left, center)
+    }
+    if (this.array[left] > this.array[right]) {
+        this.swap(left, right)
+    }
+    if (this.array[center] > this.array[right]) {
+        this.swap(center, right)
+    }
+  
+
+    // 3.巧妙的操作: 将center移动到right - 1的位置.
+    this.swap(center, right - 1)
+
+    // 4.返回pivot
+    return this.array[right - 1]
+}
+
+
+        var pivot = list.medium(2,7)
+        alert(pivot)
+        alert(list)
+
+
+    // 快速排序实现
+ArrayList.prototype.quickSort = function () {
+    this.quickSortRec(0, this.array.length - 1)
+}
+
+ArrayList.prototype.quickSortRec = function (left, right) {
+    // 0.递归结束条件
+    if (left >= right) return
+
+    // 1.获取枢纽
+    var pivot = this.medium(left, right)
+
+    // 2.开始进行交换
+    // 2.1.记录左边开始位置和右边开始位置
+    var i = left
+    var j = right - 1
+    // 2.2.循环查找位置
+    while (i < j) {
+        while (this.array[++i] < pivot) { }
+        while (this.array[--j] > pivot) { }
+        if (i < j) {
+              // 2.3.交换两个数值
+            this.swap(i, j)
+        } else {
+            // 2.4.当i<j的时候(一定不会=, 看下面解释中的序号3), 停止循环因为两边已经找到了相同的位置
+            break
+        }
+    }
+
+    // 3.将枢纽放在正确的位置
+    this.swap(i, right - 1)
+
+    // 4.递归调用左边
+    this.quickSortRec(left, i - 1)
+    this.quickSortRec(i + 1, right)
+}
+
+
+list.quickSort()
+alert(list)
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+
+    </script>
+</body>
+</html>

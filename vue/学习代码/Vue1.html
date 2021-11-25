@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- <script src = ''></script> -->
+
+    <div id= 'app'>
+        <h2>Hello {{name}}</h2>
+        <ul>
+            <li v-for = 'item in movies'>{{item}}</li>
+        </ul>
+
+        <h2>当前计数：{{counter}}</h2>
+        <button @click = 'increment'>+</button> 
+        <!-- //注意这里是字符串赋值 -->
+        <button @click = 'decrement'>-</button>
+
+    </div>
+
+    <div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+
+        let app = new Vue({
+            el: '#app',
+            data: {
+                name: 'VueJs',
+                counter: 0,
+                movies: ['a','b','c']
+            },
+            methods:{
+                increment: function(){  //这里为什么不可以用 increment: function() {}
+                    this.counter++;
+                },
+                decrement: function(){
+                    this.counter--;
+                }
+
+            }
+
+
+        })
+
+        //计数器案例
+        
+
+
+
+
+    </script>
+
+
+
+
+</body>
+</html>

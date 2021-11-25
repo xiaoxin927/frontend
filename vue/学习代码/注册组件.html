@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+
+    <div id ='app'>
+        <my-cpn></my-cpn>
+        <cpn></cpn>
+    </div>
+
+    <template id = 'myCpn'>
+        <div>
+            <h2>I am a title</h2>
+            <p>I am a paragraph</p>
+        </div>
+    </template>
+
+
+<script>
+
+    //先构造
+    const myComponent = Vue.extend({
+        template: `
+        <div>
+            <h2>title</h2>    
+            <p>pargraph</p>
+        </div>
+        
+        `
+    })
+
+
+    //再注册
+
+    Vue.component('my-cpn',myComponent)
+
+  //注意这都是在script里面写的，不是在外面写的
+  //注册完之后必须在Vue实例里面使用，否则无效！！！
+
+
+
+  //全局组件和局部组件
+    //上面那种在外面注册的就是全局，在实例里面就是局部
+  //父组件和子组件
+    //一个组件在另一个组件里面注册，这个组件就是子，另一个就是父
+  
+
+
+
+    //模板抽离（这个要写script外面）
+
+
+    const app = new Vue({
+        el: '#app',
+        data: {
+
+        },
+        components: {
+            'cpn': {
+                template: '#myCpn'
+            }
+        }
+    })
+
+
+</script>
+
+
+
+</body>
+</html>

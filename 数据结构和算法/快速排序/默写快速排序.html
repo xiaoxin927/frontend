@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        function ArrayList () {
+
+            this.array = [];
+
+
+            ArrayList.prototype.insert = function (item) {
+                return this.array.push(item);
+            }
+
+
+            ArrayList.prototype.toString = function () {
+                return this.array.join('-');
+
+            }
+
+            ArrayList.prototype.swap = function (m,n) {
+                var temp = this.array[m];
+                this.array[m] = this.array[n];
+                this.array[n] = temp;
+
+
+            }
+
+        }
+
+
+        var list = new ArrayList()
+        list.insert(3)
+        list.insert(1)
+        list.insert(2)
+        list.insert(7)
+        list.insert(4)
+        list.insert(8)
+        list.insert(6)
+        list.insert(5)
+
+
+
+
+        alert(list)
+
+
+
+        ArrayList.prototype.medium = function (left,right) {
+
+            var center  = Math.floor((left + right) / 2)
+
+            if (this.array[left] > this.array[center]){
+                this.swap(left,center)
+            }
+
+            if(this.array[left] > this.array[right]){
+                this.swap(left,right)
+            }
+            if(this.array[center] > this.array[right]){
+                this.swap(center,right)
+            }
+
+            this.swap(center,right - 1)
+
+            return this.array[right - 1]
+
+
+        }
+
+
+        ArrayList.prototype.quickSort = function() {
+
+            this.quickSortRec(0,this.array.length - 1)
+
+        }
+
+
+        ArrayList.prototype.quickSortRec = function (left,right) {
+
+            if (left >= right){
+                return
+            }
+
+
+            var pivot = this.medium(left,right)
+
+            var i = left;
+            var j = right - 1;
+ 
+            while (i < j) {
+
+                while(this.array[++i] < pivot){}
+                while(this.array[--j] > pivot){}
+
+                if (i < j){
+                    this.swap(i,j)
+                } else {
+                    break
+                }
+
+
+            }
+            this.swap(i,right - 1)
+
+            this.quickSortRec(left,i-1);
+            this.quickSortRec(i+1,right)
+
+
+
+        }
+
+        list.quickSort()
+        alert(list)
+
+
+
+    </script>
+
+
+
+
+
+
+</body>
+</html>
