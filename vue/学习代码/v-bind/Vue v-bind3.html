@@ -7,11 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- v-bind数组语法 -->
+
+
     <div id='app'>
-        <h2 class='title' :class='[active,line]'>{{message}}</h2>
-        <!-- 这个地方active和line不能加引号，否则就是字符串赋值 -->
-        <h2 class='title' :class='getClasses()'>{{message}}</h2>
+      
+        <h2 :style='{fontSize: finalSize + "px", backgroundColor: finalColor}'>{{message}}</h2>
+        <h2 :style='getStyles()'>{{message}}</h2>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -21,17 +22,17 @@
             el: '#app',
             data: {
                 message: '你好啊',
-                active: 'aaaaa',
-                line: 'bbbbb'
+                finalSize: 100,
+                finalColor: 'red',
+                // 这个red必须加单引号
             },
             methods: {
-                getClasses: function() {
-                    return [this.active,this.line]
+                getStyles: function () {
+                    return {fontSize: this.finalSize + "px", backgroundColor: this.finalColor}
                 }
             }
         })
     </script>
-
 
 
 
