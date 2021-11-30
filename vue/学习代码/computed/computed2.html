@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+  <div id='app'>
+      <h2>{{firstName}}  {{lastName}}</h2>
+      <h2>{{fullName}}</h2>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  
+  <script>
+      const app = new Vue({
+          el:'#app',
+          data: {
+              firstName:xiao,
+              lastName:jingang,
+
+          },
+        // 我们一般使用计算属性，而不是方法methods，因为计算属性在·计算机中有缓存，这样重复使用时只需执行一次
+        // 而methods需要执行多次
+          computed: {
+            //   fullName: function () {
+            //       return this.firstName + ' ' + this.lastName
+            //   }
+// 其实每一个计算属性  都有一个get，set方法，一般set是不用的，调用的是get方法
+              fullName: {
+                  set: function (newValue) {
+                        // console.log('----',newValue)  这个value是直接将fullName赋值时的那个新值，比如fullName = 'xiao xin'
+                        // 则此时的newValue为xiao xin
+                        const names = newValue.split(' ')
+                        this.firstName = names[0]
+                        this.lastName = names[1]
+                  },
+                  get: function () {
+                      return this.firstName + ' ' + this.lastName
+                  }
+                //   如果此时的fullName被赋予新值xiao xin 时，则此时的显示也为 xiao xin
+              }
+          }
+
+
+
+
+      })
+  </script>
+
+
+
+
+</body>
+</html>
