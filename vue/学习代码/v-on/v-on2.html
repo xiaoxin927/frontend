@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- v-on的修饰符 -->
+
+    <div id='app'>
+        <div @click='divClick'>
+            aaaaa
+            <!-- 阻止事件冒泡 -->
+            <button @click.stop='btnClick'>按钮</button>
+            <!-- <br> -->
+            <!-- 阻止默认事件 -->
+            <form action="baidu">
+                <input type="submit" value="提交" name="" id="" @click.preven='submitClick'>
+            </form>
+            <!-- 监听某个键盘的键帽 -->
+            <input type="text" @keyup='keyUp' name="" id="">
+            <input type="text" @keyup.enter='keyUp' name="" id="">
+            <!-- 只使用一次 -->
+            <button @click.once='onceClick'>只能一次哦</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好啊'
+            },
+            methods: {
+                btnClick () {
+                    console.log('btnClick');
+                },
+                divClick () {
+                    console.log('divClick');
+                },
+                submitClick () {
+                    console.log('submitClick');
+                },
+                keyUp () {
+                    console.log('keyUp');
+                },
+                onceClick () {
+                    console.log('onceClick');
+                }
+            }
+        })
+    </script>
+
+
+
+
+
+
+</body>
+</html>

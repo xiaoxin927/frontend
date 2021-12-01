@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- v-on: 的语法糖为 @ -->
+    <!-- 当v-on绑定的方法需要参数时，如果不传，Vue默认会将浏览器产生的event事件对象传入到方法，
+    如果传了参数，但是还是需要event对象，就要手动获取，获取对象方法：$event
+    如果v-on绑定的方法没有参数，可以加括号也可以不加 -->
+    <div id='app'>
+        <button @click='btn1Click'></button>
+        <button @click='btn2Click'></button>
+        <button @click='btn3Click(abc,$event)'></button>
+    </div>
+     
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好啊',
+                abc: 123
+            },
+            methods: {
+                btn1Click() {
+                    console.log('btnClick');
+                },
+                btn2Click(event) {
+                    console.log('----',event);
+                },
+                btn3Click(abc,event){
+                    console.log('----',abc,event);
+                }
+                
+            }
+        })
+    </script>
+
+
+
+
+
+</body>
+</html>
