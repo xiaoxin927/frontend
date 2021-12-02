@@ -10,11 +10,13 @@
 
 
     <div id='app'>
+        <!-- 遍历数组 -->
         <!-- 获取数组的元素和下标 -->
         <ul>
             <li v-for='(item,index) in names' :key='item'> {{index+1}}.{{item}}</li>
             <!-- 这个地方绑定key是为了高效的更新虚拟DOM（diff算法） -->
         </ul>
+        <!-- 遍历对象 -->
         <!-- 获取对象的值，键，下标， -->
         <ul>
             <li v-for='(value,key,index) in info'>{{value}}--{{key}}--{{index+1}}</li>
