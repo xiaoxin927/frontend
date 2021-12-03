@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id='app'>
+        <!-- 1.修饰符： lazy -->
+        <!-- 作用：等到输入框敲入回车键或者失去焦点时候 message才同步更新 -->
+        <input type="text" name="" id="" v-model.lazy='message'>
+        <h2>{{message}}</h2>
+
+        <!-- 2.修饰符： number -->
+        <input type="number" v-model.number='age'>
+        <!-- 之所以要加number的原因是因为输入框输入的内容为string，赋值给message时是string
+        加了number之后只能输入数字 -->
+        <h2>{{age}}  -- {{typeof age}}</h2>
+
+
+        <!-- 3.修饰符： trim -->
+        <!-- 作用：去除前后空格 -->
+            <input type="text" name="" id="" v-model.trim='name'>
+            <h2>您输入的名字： {{name}}</h2>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好啊',
+                age: 0,
+                name: ''
+            }
+        })
+    </script>
+
+
+    
+</body>
+</html>
