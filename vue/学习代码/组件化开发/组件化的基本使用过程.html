@@ -34,7 +34,10 @@
 
         // 2.注册组件
 
-        Vue.component('my-cpn',cpnC)
+        Vue.component('my-cpn',cpnC)//这种注册方式为全局注册，每一个Vue实例都可以使用，
+        
+
+        // 局部注册的组件只能在当前作用域下使用，当前作用域不得使用未注册过得组件，但局部组件除外
 
 
 
@@ -44,7 +47,11 @@
             el: '#app',
             data: {
 
+            },
+            components: {
+                'cpn': cpnC,//这样子注册的是局部组件，只能在Vue实例内部使用
             }
+
         })
     </script>
 

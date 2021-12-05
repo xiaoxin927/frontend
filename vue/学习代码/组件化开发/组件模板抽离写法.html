@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 方法一 -->
+    <script type='text/x-template' id='cpn'>
+    
+        <div>
+            这里面写模板的内容
+        </div>
+    
+    </script>
+
+    <!-- 方法二 -->
+
+    <template id='cpn'>
+        <div>
+            这里面写模板内容
+        </div>
+    </template>
+
+
+    <script>
+
+        Vue.component('cpn',{
+            template: '#cpn',
+            data () {
+                return {
+                    // 组件有自己的data  而且必须返回一个对象  data为函数
+
+                    // data 为函数就是为了组件之间的数据互不影响，但是注意一下：
+                    // const obj ={
+                    //     name:'name',
+                    //     age:'age'
+                    // }
+                    // //写法一
+                    // function () {
+                    //     return obj
+                    // }
+                    // // 写法二
+                    // function () {
+                    //     return {
+                    //         name:'name',
+                    //         age:'age'
+                    //     }
+                    // }
+                    // 写法一返回的永远是同一个地址值，而写法二是每次函数创建的时候都会创建新的对象
+                    // 返回的地址值是不一样的
+
+
+                }
+            }
+
+        })
+
+
+
+
+
+
+        const app = new Vue({
+
+        })
+    </script>
+
+
+
+
+</body>
+</html>
