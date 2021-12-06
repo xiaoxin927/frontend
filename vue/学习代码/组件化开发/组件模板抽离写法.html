@@ -27,7 +27,7 @@
 
     <script>
 
-        Vue.component('cpn',{
+        Vue.component('cpn',{//这个是全局注册，
             template: '#cpn',
             data () {
                 return {
@@ -52,7 +52,7 @@
                     // 写法一返回的永远是同一个地址值，而写法二是每次函数创建的时候都会创建新的对象
                     // 返回的地址值是不一样的
 
-
+                        // data写完以后必须return一个对象
                 }
             }
 

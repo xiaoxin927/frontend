@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id='app'>
+        <cpn v-bind:cmovies='movies' :cmessage='message'></cpn>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+    <template id='cpn'>
+        <div>
+            <!-- 这里必须要有一个div,去包含其他的所有标签-->
+            {{cmovies}}
+        </div>
+    </template>
+
+    <script>
+
+        const cpn = {
+            template: '#cpn',
+            // 父传子： props
+            props: ['cmovies','cmessage'],
+            props: {
+                // 1.类型限制
+                // cmovies: Array,
+                // cmessage: String,
+
+                // 2.提供一些默认值
+                cmessage: {
+                    type: String,
+                    default: 'aaaa',
+                    // 当这个type为Object或者Array时，default必须为函数 default （）{}
+                cmessage: {
+                    type: Array,
+                    default () {
+                        return []
+                    },
+                    // required: true 如果加了这一行，父组件必须向子组件传值，不传就为默认值
+                }    
+
+            }
+
+
+            },
+
+
+            data () {
+                return {
+
+                }
+            },
+            methods: {
+
+            }
+        }
+
+
+        const app = new Vue({
+            el:'#app',
+            data: {
+                message: '你好啊',
+                movies: ['海王','海贼王','海尔兄弟']
+            },
+            components: {
+                cpn,
+            }
+        })
+
+
+    </script>
+
+
+
+
+</body>
+</html>

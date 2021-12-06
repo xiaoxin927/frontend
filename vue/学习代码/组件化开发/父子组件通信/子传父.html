@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id='app'>
+        <cpn @item-click='cpnClick'></cpn>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+    <template id='cpn'>
+        <div>
+            <ul>
+             
+                <li v-for='item in categories'
+                    @click='btnClick(item)'
+                >
+                <button>{{item.name}}</button>
+                </li>
+             
+            </ul>
+        </div>
+    </template> 
+
+
+
+    <script>
+
+        const cpn = {
+            template: '#cpn',
+            data() {
+                return {
+                    categories: [
+                         {id: 'aaa',name:'手机数码'},
+                         {id: 'aaa',name:'电脑办公'},   
+                         {id: 'aaa',name:'生活百货'},   
+                         {id: 'aaa',name:'芝麻开门'},   
+                    ]
+                }
+            },
+            methods: {
+                btnClick(item) {
+                    //发射事件
+                    this.$emit('item-click',item)
+                }
+            }
+        }
+
+        const app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            components: {
+                cpn,
+            },
+            methods: {
+                cpnClick(item) {
+                    console.log('cpnClick',item);
+                }
+            }
+        })
+
+
+
+    </script>
+
+
+</body>
+</html>
