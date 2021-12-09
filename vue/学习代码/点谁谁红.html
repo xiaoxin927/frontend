@@ -20,6 +20,7 @@
                 :class='{active: currentIndex === index}'
                 @click='liClick(index)'>
                 {{index+1}}--{{item}}
+                
             </li>
         </ul>
         
@@ -40,6 +41,7 @@
                liClick (index) {
                 //    一定要注意传参数，我靠！调了好久才发现问题在这，哭了哭了！！！！
                    this.currentIndex = index
+                   
                }
             }
 
