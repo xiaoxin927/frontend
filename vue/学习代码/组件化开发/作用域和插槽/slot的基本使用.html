@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- slot 是一个预留位置  在使用组件的时候往组件里放东西就会代替插槽 -->
+    <!-- 插槽的基本使用：<slot></slot>
+        如果有多个值，同时放入组件替换时，一起作为替换元素
+    -->
+    <!-- 编译作用域： 组件当前所在的环境，可以理解为父组件
+                     当在子组件使用例如 
+                     <div id='app'>
+                         <cpn v-for='item in array'></cpn>
+                     </div> 时，cpn里面的array会去div的组件里面找  -->
+    <div id='app'>
+        <cpn><span>哦hhhhhhh</span></cpn>
+        <cpn></cpn>
+        <cpn>
+            <span>span</span>
+             <i>i</i>
+             <div>div</div>
+        </cpn>
+        <cpn></cpn>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <template id='cpn'>
+        <div>
+            <h2>我是组件</h2>
+            <p>我是组件，哈哈哈</p>
+            <slot><button>按钮</button></slot>
+            <!-- 默认是button -->
+        </div>
+    </template>
+
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            components: {
+                cpn: {
+                    template: '#cpn',
+                    data () {
+                        return {
+
+                        }
+
+                    },
+                    
+                }
+            }
+        })
+    </script>
+
+
+
+
+</body>
+</html>

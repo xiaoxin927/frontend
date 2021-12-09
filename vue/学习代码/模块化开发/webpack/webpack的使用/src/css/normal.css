@@ -1,0 +1,8 @@
+body {
+  background-color: red;
+  /* background:url(); */
+  /* 如果css有引用类似 url这样的文件，比如图片，就还需要url-loader */
+
+  /* 当加载的图片大小小于 limit时，直接 把图片转成base64，响应给浏览器
+     当大于limit时 需要安装 file-loader  将图片打包后 响应给浏览器*/
+}
