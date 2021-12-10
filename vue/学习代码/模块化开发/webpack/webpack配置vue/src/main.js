@@ -19,10 +19,14 @@ require("./css/normal.css");
 //使用vue进行开发
 
 import Vue from "vue";
+// import App from "./vue/app.js";
+import App from "./vue/App";
 
-const app = new Vue({
+new Vue({
   el: "#app",
-  data: {
-    message: "Hello Webpack",
+  // 这个template会直接将挂载index.html里面的id=app的div全部替换
+  template: "<App/>",
+  components: {
+    App,
   },
 });
