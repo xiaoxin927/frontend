@@ -20,7 +20,7 @@ require("./css/normal.css");
 
 import Vue from "vue";
 // import App from "./vue/app.js";
-import App from "./vue/App";
+import App from "./vue/App.vue";
 
 new Vue({
   el: "#app",
