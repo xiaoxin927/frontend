@@ -32,3 +32,6 @@ new Vue({
 });
 
 document.writeln("<span>xiaojingang</span>");
+
+//node的核心引擎V8可以直接运行 js
+//js 运行需要先转变成字节码再变成二进制代码  而V8直接将其变成二进制代码运行
