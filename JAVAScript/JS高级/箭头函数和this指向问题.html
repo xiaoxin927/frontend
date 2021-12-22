@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- 箭头函数 -->
+    <script>
+        //第一组
+        // const mul = (num1,num2) => {
+        //    return num1 * num2;
+        // }
+
+        // console.log(mul(20,30));
+
+        // const mul = (num1,num2) => num1 * num2
+
+        // console.log(mul(20,30));
+
+        //第二组（含有log)
+
+        // const demo = () => {
+        //     console.log('hello demo');
+        // }
+
+        const demo = () => console.log('hello demo'); //hello demo
+
+        demo();//hello demo 
+        console.log(demo()); //undefined
+
+
+        // this问题
+
+        const obj = {
+            aaa() {
+                setTimeout(function () {
+                  setTimeout(function() {
+                      console.log(this);//window
+                  })
+                  setTimeout(() => {
+                      console.log(this);//window
+                  })
+                })
+
+                setTimeout(() => {
+                    setTimeout(function () {
+                        console.log(this);//window
+                    })
+
+                    setTimeout(() => {
+                        console.log(this);//obj:{aaa:f}
+                    })
+                })
+
+
+
+            }
+        }
+
+
+        obj.aaa()
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+</body>
+</html>
