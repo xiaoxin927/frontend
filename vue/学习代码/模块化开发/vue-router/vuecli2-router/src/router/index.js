@@ -25,6 +25,9 @@ const routes = [
   {
     path: "/home",
     component: Home,
+    meta: {
+      title: "首页"
+    },
     children: [
       {
         path: "",
@@ -42,21 +45,36 @@ const routes = [
   },
   {
     path: "/about",
-    component: About
+    component: About,
+    meta: {
+      title: "关于"
+    }
   },
   {
     path: "/user/:abc",
-    component: User
+    component: User,
+    meta: {
+      title: "用户"
+    }
   },
   {
     path: "/profile",
-    component: Profile
+    component: Profile,
+    meta: {
+      title: "档案"
+    }
   }
 ];
 
 const router = new VueRouter({
   routes,
   mode: "history"
+});
+
+router.beforeEach((to, from, next) => {
+  document.title = to.matched[0].meta.title;
+  console.log(to);
+  next();
 });
 
 export default router;
